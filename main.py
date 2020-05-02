@@ -1,15 +1,15 @@
 from multiprocessing import Pool as PPool
 from multiprocessing.pool import ThreadPool as TPool
-from model import User
 from utils import logging
 
 
-PPOOL_SIZE, PROCESS_NUMBER = 1, 3
+PPOOL_SIZE, PROCESS_NUMBER = 2, 3
 TPOOL_SIZE, THREAD_NUMBER = 2, 3
 
 
 def process(i):
     def thread(j):
+        from model import User
         try:
             User.get_all(i, j)
             User.add_user(i, j)
