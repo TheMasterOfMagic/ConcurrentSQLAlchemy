@@ -5,7 +5,7 @@ from utils import logging
 
 
 PPOOL_SIZE, PROCESS_NUMBER = 1, 3
-TPOOL_SIZE, THREAD_NUMBER = 1, 3
+TPOOL_SIZE, THREAD_NUMBER = 2, 3
 
 
 def process(i):
