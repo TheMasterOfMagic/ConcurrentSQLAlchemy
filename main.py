@@ -1,19 +1,19 @@
 from multiprocessing import Pool as PPool
 from multiprocessing.pool import ThreadPool as TPool
-from utils import logging, f
+from model import User
+from utils import logging
 
 
-PPOOL_SIZE, PROCESS_NUMBER = 2, 3
-TPOOL_SIZE, THREAD_NUMBER = 2, 3
+PPOOL_SIZE, PROCESS_NUMBER = 1, 3
+TPOOL_SIZE, THREAD_NUMBER = 1, 3
 
 
 def process(i):
     def thread(j):
-        from time import sleep
         try:
-            logging.info(f'{i}-{j} start')
-            sleep(1)
-            logging.info(f'{i}-{j} end')
+            User.get_all(i, j)
+            User.add_user(i, j)
+            User.get_all(i, j)
         except Exception as exc:
             logging.error(f'{i}-{j} {type(exc).__name__}:{exc.args}')
     try:
